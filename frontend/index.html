@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Compose Demo</title>
+</head>
+
+<body>
+
+    <h1>Multi-Container Application</h1>
+
+    <button onclick="getMessage()">
+        Get Backend Message
+    </button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        async function getMessage() {
+            try {
+                const response = await fetch("http://localhost:3000");
+
+                const data = await response.json();
+
+                document.getElementById("result").innerText = data;
+            } catch (error) {
+                document.getElementById("result").innerText =
+                    "Failed to connect to backend";
+
+                console.error(error);
+            }
+        }
+    </script>
+
+</body>
+</html>
