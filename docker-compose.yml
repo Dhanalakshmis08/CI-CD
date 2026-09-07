@@ -1,0 +1,25 @@
+services:
+
+  backend:
+    build: ./dummy-backend
+    container_name: dummy-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - network
+
+  frontend:
+    build: ./frontend
+    container_name: frontendcompose
+    ports:
+      - "2000:80"
+    depends_on:
+      - backend
+    networks:
+      - network
+
+networks:
+
+  network:
+    name: network
+    driver: bridge
